@@ -13,15 +13,11 @@ import java.util.stream.Stream;
 public class CollectionOperator {
     //选出给定区间中所有的数字 -ok
     public List<Integer> getListByInterval(int left, int right) {
-        //IntStream st = IntStream.rangeClosed(Math.min(left,right),Math.max(left,right));
-        List<Integer> arrayList = new ArrayList<>();
-       // arrayList.stream().i(f -> f+1).forEachRemaining(System.out::print);
        int  l = Math.min(left,right);
        int  r = Math.max(left,right);
-        arrayList = Stream.iterate(l, item -> item + 1).limit(r-l+1).collect(Collectors.toList());
+        List<Integer> arrayList = Stream.iterate(l, item -> item + 1).limit(r-l+1).collect(Collectors.toList());
         if (left > right)
             Collections.reverse(arrayList);
-       // List<Integer> list =st.boxed().collect(Collectors.toList());
         return arrayList;
     }
     ////选出给定区间中所有的偶数 -ok

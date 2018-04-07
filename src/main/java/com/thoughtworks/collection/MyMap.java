@@ -23,39 +23,11 @@ public class MyMap {
     }
     //数字映射为字母 -ok
     public List<String> mapLetter() {
-        //return  array.stream().map(MyMap::R(array,letterList)).collect(Collectors.toList());
-        List<String> res = new ArrayList<>();
-        for (int i = 0;i < array.size();i++) {
-            res.add(letterList.get(array.get(i)-1));
-        }
-        return res;
-    }
-
-    //数字映射为字母
-    private static List<String> R(List<Integer> array,List<String> letterList){
-        List<String> res = new ArrayList<>();
-        for (int i = 0;i < array.size();i++) {
-            res.add(letterList.get(array.get(i)-1));
-        }
-        return res;
+        return array.stream().map(num -> letters[num - 1]).collect(Collectors.toList());
     }
     //字母表映射 -ok
     public List<String> mapLetters() {
-        List<String> res = new ArrayList<>();
-        for (int i = 0;i < array.size();i++) {
-            int firstCh =  array.get(i)/26;
-            int secondCh = array.get(i)%26;
-            if (firstCh > 0){
-                if (secondCh == 0){
-                    firstCh -= 1;
-                    secondCh= 26;
-                }
-                res.add(letterList.get(firstCh-1)+letterList.get(secondCh-1));
-            }
-            else
-                res.add(letterList.get(secondCh-1));
-        }
-        return res;
+        return  array.stream().map(num -> (num/26 > 0? letterList.get((num - 1) / 26 - 1): "") + letterList.get((num - 1) % 26)).collect(Collectors.toList());
     }
     //从大到小排序 -ok
     public List<Integer> sortFromBig() {

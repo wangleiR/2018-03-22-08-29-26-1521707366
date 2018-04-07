@@ -16,22 +16,11 @@ public class Flaten {
     }
     //把二维数组变成一维数组 -ok
     public List<Integer> transformToOneDimesional() {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0;i<array.length;i++){
-            for (int j = 0;j<array[i].length;j++){
-                list.add(array[i][j]);
-            }
-        }
-        return list;
+        return Arrays.stream(array).flatMap(Arrays::stream).collect(Collectors.toList());
+
     }
     // 把二维数组变成一维数组,消除重复,按照第一次出现的顺序排列最后的输出结果 -ok
     public List<Integer> transformToUnrepeatedOneDimesional() {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0;i<array.length;i++){
-            for (int j = 0;j<array[i].length;j++){
-                list.add(array[i][j]);
-            }
-        }
-        return list.stream().distinct().collect(Collectors.toList());
+        return Arrays.stream(array).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
     }
 }
