@@ -24,7 +24,7 @@ public class Filter {
     public List<Integer> filterMultipleOfThree() {
         return array.stream().filter(n -> n%3 == 0).collect(Collectors.toList());
     }
-    //求两数组的公共元素
+    //求两数组的公共元素 -ok
     public List<Integer> getCommonElements(List<Integer> firstList, List<Integer> secondList) {
         List m1 = new ArrayList(firstList);
         List m2 = new ArrayList(secondList);
